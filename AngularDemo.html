@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="AngularDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.js"></script>
+    <script src="script.js"></script>
+   
+</head>
+<body>
+    angularJS实例
+    <hr>
+    <div ng-controller="InvoiceCtrl">
+        <b>Invoice:</b>
+        <br>
+        <br>
+        <table>
+            <tr><td>Quantity</td><td>Cost</td></tr>
+            <tr>
+                <td><input type="integer" min="0" ng-model="qty" required="true"></td>
+                <td><input type="number" ng-model="cost" required></td>
+            </tr>
+        </table>
+        <hr>
+        <b>Total: </b> {{qty * cost | currency:'￥':2}}
+    </div>
+    <br>
+    过滤器
+    <hr>
+    <div ng-init="list=['Chrome','Safari', 'Firefox', 'IE']">
+        Number Formatting: {{1234567890 | number}} <br>
+        array filtering <input ng-model="predicate"> {{list | filter:predicate | json}}
+    </div>
+    <br>
+    自定义指令
+    <hr>
+    <span draggable>Drag Me</span>
+    <br>
+    工作原理: startup, runtime, scope, controller, model, view, directives, filters, injector, module, $ 
+    DOM解析->加载angular.js-> onDomContentLoaded -> angular找ng-app -> 根据ng-app配置 $injector-> $injector可以创建$compile serivce和$rootscope
+    ->$complie service编译DOM，并将$rootScope链接到DOM
+    <hr>
+    <p ng-init=" name='World, Angular' "> Hello {{name}} !</p>
+    <br>
+    <br>
+    Event Loop: Event(Timer, Network, User event), once event happens, handler triggered, js context entered, DOM editing possible
+    Once handler callback execution complete, leaving js context, re-render view
+    
+</body>
+</html>
